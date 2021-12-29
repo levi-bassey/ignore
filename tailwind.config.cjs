@@ -30,6 +30,9 @@ const config = {
       orange: "#FF8F00",
       gray: "#373B53",
     },
+    fontFamily: {
+      spartan: ["Spartan", "sans-serif"],
+    },
   },
 
   plugins: [],
