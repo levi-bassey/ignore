@@ -1,4 +1,5 @@
 <script>
+  import Header from "$lib/components/Header.svelte";
   import "../app.css";
 </script>
 
@@ -11,6 +12,10 @@
   />
 </svelte:head>
 
-<div class="font-spartan">
-  <slot />
+<div class="relative flex flex-col h-screen font-spartan lg:flex-row">
+  <Header />
+
+  <main class="grow overflow-y-auto">
+    <slot />
+  </main>
 </div>

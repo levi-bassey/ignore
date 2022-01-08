@@ -1,6 +1,8 @@
 const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
+  darkMode: "class",
+
   theme: {
     colors: {
       white: "#fff",
@@ -35,7 +37,7 @@ const config = {
     },
   },
 
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
 
 module.exports = config;
