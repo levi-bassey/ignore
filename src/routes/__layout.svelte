@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Header from "$lib/components/Header.svelte";
   import "../app.css";
 </script>
@@ -12,10 +12,12 @@
   />
 </svelte:head>
 
-<div class="relative flex flex-col h-screen font-spartan lg:flex-row">
+<div
+  class="relative flex flex-col h-screen bg-[#f2f2f2] text-xs font-spartan lg:flex-row"
+>
   <Header />
 
-  <main class="grow overflow-y-auto">
+  <main class="grow">
     <slot />
   </main>
 </div>
