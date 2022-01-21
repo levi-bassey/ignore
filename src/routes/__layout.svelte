@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div
-  class="relative flex flex-col h-screen bg-[#f2f2f2] text-xs font-spartan lg:flex-row"
+  class="relative flex flex-col h-screen bg-[#f2f2f2] text-dark-blue-400 text-xs font-spartan lg:flex-row"
 >
   <Header />
 

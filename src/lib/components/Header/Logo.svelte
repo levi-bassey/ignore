@@ -1,6 +1,6 @@
 <a
   href="/"
-  class="relative rounded-r-2xl bg-indigo-200 p-6 overflow-hidden sm:p-7 lg:p-8"
+  class="relative rounded-r-2xl bg-indigo-200 p-6 overflow-hidden md:p-7 lg:p-8"
 >
   <span class="absolute inset-0 translate-y-1/2 rounded-l-2xl bg-[#9277FF]" />
   <span class="sr-only">Home</span>

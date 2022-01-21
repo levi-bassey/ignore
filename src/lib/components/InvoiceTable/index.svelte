@@ -3,7 +3,7 @@
 </script>
 
 <table
-  class="mt-8 mx-auto w-11/12 max-w-lg flex flex-col space-y-4 md:max-w-2xl md:mt-14 lg:mt-16"
+  class="mt-4 mx-auto w-11/12 max-w-lg flex flex-col space-y-4 md:max-w-2xl md:mt-10 lg:mt-12"
 >
   <caption class="sr-only"> Invoices </caption>
 
@@ -17,5 +17,6 @@
     </tr>
   </thead>
 
+  <InvoiceTableRow />
   <InvoiceTableRow />
 </table>

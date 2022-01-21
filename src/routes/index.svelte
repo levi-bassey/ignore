@@ -1,5 +1,18 @@
 <script lang="ts">
   import InvoiceTable from "$lib/components/InvoiceTable/index.svelte";
+  import InvoiceTableFilter from "$lib/components/InvoiceTableFilter.svelte";
+  import NewInvoiceForm from "$lib/components/NewInvoiceForm.svelte";
 </script>
+
+<div
+  class="flex items-center mt-8 mx-auto w-11/12 max-w-lg md:mt-14 md:max-w-2xl lg:mt-16"
+>
+  <div class="">
+    <h1 class="text-xl font-bold md:text-3xl">Invoices</h1>
+    <p class="mt-0.5 text-light-blue-300 md:mt-2">7 Invoices</p>
+  </div>
+  <InvoiceTableFilter />
+  <NewInvoiceForm />
+</div>
 
 <InvoiceTable />
