@@ -1,7 +1,22 @@
+<script context="module" lang="ts">
+  import type { Load } from "@sveltejs/kit";
+  import { invoices } from "../data";
+
+  export const load: Load = () => {
+    return {
+      props: {
+        invoices,
+      },
+    };
+  };
+</script>
+
 <script lang="ts">
   import InvoiceTable from "$lib/components/InvoiceTable/index.svelte";
   import InvoiceTableFilter from "$lib/components/InvoiceTableFilter.svelte";
   import NewInvoiceForm from "$lib/components/NewInvoiceForm.svelte";
+
+  export let invoices: any;
 </script>
 
 <div
@@ -15,4 +30,4 @@
   <NewInvoiceForm />
 </div>
 
-<InvoiceTable />
+<InvoiceTable {invoices} />

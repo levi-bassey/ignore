@@ -1,5 +1,7 @@
 <script lang="ts">
   import InvoiceTableRow from "./InvoiceTableRow.svelte";
+
+  export let invoices: any;
 </script>
 
 <table
@@ -17,6 +19,7 @@
     </tr>
   </thead>
 
-  <InvoiceTableRow />
-  <InvoiceTableRow />
+  {#each invoices as invoice}
+    <InvoiceTableRow {invoice} />
+  {/each}
 </table>

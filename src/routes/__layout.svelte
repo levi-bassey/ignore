@@ -17,7 +17,7 @@
 >
   <Header />
 
-  <main class="grow">
+  <main class="grow overflow-y-auto">
     <slot />
   </main>
 </div>
