@@ -5,7 +5,7 @@
 </script>
 
 <table
-  class="mt-4 mx-auto w-11/12 max-w-lg flex flex-col space-y-4 md:max-w-2xl md:mt-10 lg:mt-12"
+  class="mt-4 mx-auto w-11/12 max-w-lg flex flex-col space-y-4 md:max-w-3xl md:mt-10 lg:mt-12"
 >
   <caption class="sr-only"> Invoices </caption>
 

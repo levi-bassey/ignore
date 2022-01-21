@@ -1,5 +1,27 @@
 <script lang="ts">
   export let invoice: any;
+
+  function formatDate(s: string): string {
+    const dateObj = new Date(s);
+
+    let date = dateObj.getDate().toString();
+    date = date.length === 1 ? `0${date}` : date;
+    const month = dateObj.toLocaleDateString("default", { month: "short" });
+    const year = dateObj.getFullYear();
+
+    return `${date} ${month} ${year}`;
+  }
+
+  function formatCurrency(num: number): string {
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    });
+
+    return formatter.format(num);
+  }
 </script>
 
 <tbody class="block rounded-lg px-6 py-4 bg-white">
@@ -10,7 +32,9 @@
       >
     </td>
     <td class="justify-self-end truncate md:col-span-3 md:justify-self-auto">
-      <span class="text-light-blue-300">{invoice.paymentDue}</span>
+      <span class="text-light-blue-300"
+        >Due {formatDate(invoice.paymentDue)}</span
+      >
     </td>
     <td class="row-start-4 truncate md:col-span-3 md:row-auto">
       <span class="text-light-blue-300 font-medium">{invoice.clientName}</span>
@@ -18,7 +42,9 @@
     <td
       class="row-start-5 truncate md:col-span-3 md:row-auto md:justify-self-end"
     >
-      <span class="font-bold text-base">{invoice.total}</span>
+      <span class="font-bold text-base">
+        {formatCurrency(invoice.total)}
+      </span>
     </td>
     <td
       class="justify-self-end self-center col-start-2 row-start-4 row-end-6 md:col-start-12 md:row-auto md:self-auto"

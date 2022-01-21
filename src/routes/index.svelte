@@ -20,7 +20,7 @@
 </script>
 
 <div
-  class="flex items-center mt-8 mx-auto w-11/12 max-w-lg md:mt-14 md:max-w-2xl lg:mt-16"
+  class="flex items-center mt-8 mx-auto w-11/12 max-w-lg md:mt-14 md:max-w-3xl lg:mt-16"
 >
   <div class="">
     <h1 class="text-xl font-bold md:text-3xl">Invoices</h1>
