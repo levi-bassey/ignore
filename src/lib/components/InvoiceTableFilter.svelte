@@ -1,22 +1,17 @@
 <script lang="ts">
-  import { afterUpdate, onDestroy } from "svelte";
-  import { browser } from "$app/env";
-
   let isOpen = false;
 
   const close = () => (isOpen = false);
 
-  afterUpdate(() => {
-    if (isOpen) {
-      document.addEventListener("click", close);
-    }
-  });
+  function open(node: Element) {
+    document.addEventListener("click", close);
 
-  onDestroy(() => {
-    if (browser) {
-      document.removeEventListener("click", close);
-    }
-  });
+    return {
+      destroy: () => {
+        document.removeEventListener("click", close);
+      },
+    };
+  }
 </script>
 
 <div on:click|stopPropagation class="relative ml-auto">
@@ -35,6 +30,7 @@
 
   {#if isOpen}
     <div
+      use:open
       class="absolute top-8 right-1/2 translate-x-1/2 w-48 rounded-lg p-6 shadow-lg bg-white"
     >
       <ul class="space-y-4">
