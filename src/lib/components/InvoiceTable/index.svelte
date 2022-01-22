@@ -1,7 +1,8 @@
 <script lang="ts">
+  import type { Invoice } from "$lib/types";
   import InvoiceTableRow from "./InvoiceTableRow.svelte";
 
-  export let invoices: any;
+  export let invoices: Invoice[];
 </script>
 
 <table

@@ -15,8 +15,9 @@
   import InvoiceTable from "$lib/components/InvoiceTable/index.svelte";
   import InvoiceTableFilter from "$lib/components/InvoiceTableFilter.svelte";
   import NewInvoiceForm from "$lib/components/NewInvoiceForm.svelte";
+  import type { Invoice } from "$lib/types";
 
-  export let invoices: any;
+  export let invoices: Invoice[];
 </script>
 
 <div

@@ -1,5 +1,6 @@
 <script lang="ts">
-  export let invoice: any;
+  import type { Invoice } from "$lib/types";
+  export let invoice: Invoice;
 
   function formatDate(s: string): string {
     const dateObj = new Date(s);
@@ -22,6 +23,13 @@
 
     return formatter.format(num);
   }
+
+  function calculateInvoiceTotal(invoice: Invoice): number {
+    return invoice.items.reduce(
+      (accum, { quantity, price }) => accum + quantity * price,
+      0
+    );
+  }
 </script>
 
 <tbody class="block rounded-lg px-6 py-4 bg-white">
@@ -43,7 +51,7 @@
       class="row-start-5 truncate md:col-span-3 md:row-auto md:justify-self-end"
     >
       <span class="font-bold text-base">
-        {formatCurrency(invoice.total)}
+        {formatCurrency(calculateInvoiceTotal(invoice))}
       </span>
     </td>
     <td
