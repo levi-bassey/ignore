@@ -30,4 +30,6 @@
   <NewInvoiceForm />
 </div>
 
-<InvoiceTable {invoices} />
+<div class="pb-24">
+  <InvoiceTable {invoices} />
+</div>
