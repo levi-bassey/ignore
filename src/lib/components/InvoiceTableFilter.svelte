@@ -1,9 +1,20 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import type { Filter } from "$lib/types";
+
+  const dispatch = createEventDispatcher<{ filter: Filter }>();
+  const options = ["pending", "paid"] as const;
+
+  export let filter: Filter;
+
   let isOpen = false;
 
-  const close = () => (isOpen = false);
+  const setFilter = (currentFilter: Filter) => {
+    dispatch("filter", currentFilter === filter ? "all" : currentFilter);
+  };
 
-  function open(node: Element) {
+  const close = () => (isOpen = false);
+  const clickOutside = (node: Element) => {
     document.addEventListener("click", close);
 
     return {
@@ -11,7 +22,7 @@
         document.removeEventListener("click", close);
       },
     };
-  }
+  };
 </script>
 
 <div on:click|stopPropagation class="relative ml-auto">
@@ -30,30 +41,25 @@
 
   {#if isOpen}
     <div
-      use:open
+      use:clickOutside
       class="absolute top-8 right-1/2 translate-x-1/2 w-48 rounded-lg p-6 shadow-lg bg-white"
     >
       <ul class="space-y-4">
-        <li>
-          <label class="flex items-center">
-            <input
-              type="checkbox"
-              name="status"
-              class="border-none rounded-sm bg-light-blue-200 checked:text-indigo-200"
-            />
-            <span class="ml-3.5 font-bold">Pending</span>
-          </label>
-        </li>
-        <li>
-          <label class="flex items-center">
-            <input
-              type="checkbox"
-              name="status"
-              class="border-none rounded-sm bg-light-blue-200 checked:text-indigo-200"
-            />
-            <span class="ml-3.5 font-bold">Paid</span>
-          </label>
-        </li>
+        {#each options as option}
+          <li>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="status"
+                checked={filter === option}
+                value={option}
+                on:input={() => setFilter(option)}
+                class="border-none rounded-sm bg-light-blue-200 checked:text-indigo-200"
+              />
+              <span class="ml-3.5 font-bold capitalize">{option}</span>
+            </label>
+          </li>
+        {/each}
       </ul>
     </div>
   {/if}

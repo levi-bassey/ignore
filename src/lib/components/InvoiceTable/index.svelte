@@ -1,8 +1,17 @@
 <script lang="ts">
-  import type { Invoice } from "$lib/types";
+  import type { Filter, Invoice } from "$lib/types";
   import InvoiceTableRow from "./InvoiceTableRow.svelte";
 
   export let invoices: Invoice[];
+  export let filter: Filter;
+
+  const filterInvoices = (filter: Filter, invoices: Invoice[]): Invoice[] => {
+    return filter === "all"
+      ? invoices
+      : filter === "pending"
+      ? invoices.filter((item) => item.status === "pending")
+      : invoices.filter((item) => item.status === "paid");
+  };
 </script>
 
 <table
@@ -20,7 +29,7 @@
     </tr>
   </thead>
 
-  {#each invoices as invoice}
+  {#each filterInvoices(filter, invoices) as invoice (invoice.id)}
     <InvoiceTableRow {invoice} />
   {/each}
 </table>

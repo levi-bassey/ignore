@@ -15,9 +15,11 @@
   import InvoiceTable from "$lib/components/InvoiceTable/index.svelte";
   import InvoiceTableFilter from "$lib/components/InvoiceTableFilter.svelte";
   import NewInvoiceForm from "$lib/components/NewInvoiceForm.svelte";
-  import type { Invoice } from "$lib/types";
+  import type { Invoice, Filter } from "$lib/types";
 
   export let invoices: Invoice[];
+
+  let filter: Filter = "all";
 </script>
 
 <div
@@ -27,10 +29,10 @@
     <h1 class="text-xl font-bold md:text-3xl">Invoices</h1>
     <p class="mt-0.5 text-light-blue-300 md:mt-2">7 Invoices</p>
   </div>
-  <InvoiceTableFilter />
+  <InvoiceTableFilter {filter} on:filter={(e) => (filter = e.detail)} />
   <NewInvoiceForm />
 </div>
 
 <div class="pb-24">
-  <InvoiceTable {invoices} />
+  <InvoiceTable {invoices} {filter} />
 </div>
